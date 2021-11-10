@@ -1,5 +1,5 @@
 ---
-- hosts: demo-server
+- hosts: prod-server
   tasks:
     - name: Echo hello world
       shell: echo "Hello World"
