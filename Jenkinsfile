@@ -41,7 +41,7 @@ pipeline {
                  nexusVersion: 'nexus3', 
                  protocol: 'http', 
                  repository: 'demo', 
-                 version: '1.1.2'
+                 version: '1.1.3'
             }          
         }
         stage('Deploy to prod') {
