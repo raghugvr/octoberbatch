@@ -46,7 +46,7 @@ pipeline {
         }
         stage('Deploy to prod') {
             steps{
-                sh 'ansible-playbook /tmp/deploy.yaml'
+                ansiblePlaybook become: true, becomeUser: 'ubuntu', credentialsId: 'ansible', inventory: 'ansible/hosts', playbook: 'ansible/deploy.yaml'
             }          
         }
     }
