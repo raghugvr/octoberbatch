@@ -1,5 +1,6 @@
 ---
 - hosts: prod-server
+  become: true
   tasks:
     - name: Deploy build to Tomcat
       shell: cd /opt/tomcat/webapps && wget http://3.16.181.122:8081/repository/demo/Demoapp/WebApp/1.1.1/WebApp-1.1.1.war
