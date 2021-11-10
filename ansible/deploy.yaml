@@ -3,5 +3,5 @@
   become: true
   tasks:
     - name: Deploy build to Tomcat
-      shell: wget http://3.16.181.122:8081/repository/demo/Demoapp/WebApp/1.1.2/WebApp-1.1.2.war -O /opt/tomcat/webapps/demo.war 
+      shell: wget http://3.16.181.122:8081/repository/demo/Demoapp/WebApp/1.1.3/WebApp-1.1.3.war -O /opt/tomcat/webapps/demo.war 
 
