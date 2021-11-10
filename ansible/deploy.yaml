@@ -1,0 +1,6 @@
+---
+- hosts: demo-server
+  tasks:
+    - name: Echo hello world
+      shell: echo "Hello World"
+
