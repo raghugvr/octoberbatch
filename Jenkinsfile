@@ -1,4 +1,4 @@
-def TAG_SELECTOR = "UNINTIALIZED"
+def VERSION = "1.0.0"
 pipeline {
     agent any
     tools {
@@ -9,9 +9,9 @@ pipeline {
             steps{
                 sh 'mvn clean package'
                 script {
-                    TAG_SELECTOR = readMavenPom().getVersion()
+                    VERSION = readMavenPom().getVersion()
                 }
-                echo("TAG_SELECTOR=${TAG_SELECTOR}")       
+                echo("Build version: ${VERSION}")       
             }          
         }  
          stage('SonarQube analysis') {
@@ -46,7 +46,12 @@ pipeline {
                  nexusVersion: 'nexus3', 
                  protocol: 'http', 
                  repository: 'demo', 
-                 version: '1.1.2'
+                 version: ${VERSION}
+            }          
+        }
+        stage('Build Docker Image') {
+            steps{
+                sh "docker info" 
             }          
         }
         stage('Deploy to prod') {
