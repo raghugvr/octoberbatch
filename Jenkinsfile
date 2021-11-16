@@ -46,7 +46,7 @@ pipeline {
                  nexusVersion: 'nexus3', 
                  protocol: 'http', 
                  repository: 'demo', 
-                 version: ${VERSION}
+                 version: "${VERSION}"
             }          
         }
         stage('Build Docker Image') {
