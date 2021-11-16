@@ -52,9 +52,9 @@ pipeline {
         stage('Build Docker Image') {
             steps{
                 sh "docker build -t prashanthdevaraj/java-docker:${VERSION} ."
-                sh "docker tag -t prashanthdevaraj/java-docker:${VERSION} prashanthdevaraj/java-docker:latest"
+                sh "docker tag prashanthdevaraj/java-docker:${VERSION} prashanthdevaraj/java-docker:latest"
                 sh "docker push prashanthdevaraj/java-docker:${VERSION}"
-                sh "docker push -t prashanthdevaraj/java-docker:latest" 
+                sh "docker push prashanthdevaraj/java-docker:latest" 
             }
         }
         /*stage('Deploy to prod') {
