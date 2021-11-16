@@ -30,7 +30,7 @@ pipeline {
                 echo 'Test'
             }
           } 
-        stage('Upload war to nexus') {
+        /*stage('Upload war to nexus') {
             steps{
                  nexusArtifactUploader artifacts: [
                      [
@@ -48,7 +48,7 @@ pipeline {
                  repository: 'demo', 
                  version: "${VERSION}"
             }          
-        }
+        }*/
         stage('Build Docker Image') {
             steps{
                 sh "docker info" 
