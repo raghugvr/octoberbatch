@@ -7,7 +7,7 @@ pipeline {
         stage('Build') {
             steps{
                 sh 'mvn clean package'
-                echo ${POM_VERSION}               
+                echo "Build version no: ${POM_VERSION}"               
             }          
         }  
          stage('SonarQube analysis') {
