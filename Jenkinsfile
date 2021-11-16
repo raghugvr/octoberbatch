@@ -51,14 +51,16 @@ pipeline {
         }*/
         stage('Build Docker Image') {
             steps{
-                sh "docker build -t prashanthdevaraj/java-docker:${VERSION} -t prashanthdevaraj/java-docker:latest"
-                sh "docker push prashanthdevaraj/java-docker:${VERSION} -t prashanthdevaraj/java-docker:latest" 
+                sh "docker build -t prashanthdevaraj/java-docker:${VERSION} ."
+                sh "docker tag -t prashanthdevaraj/java-docker:${VERSION} prashanthdevaraj/java-docker:latest"
+                sh "docker push prashanthdevaraj/java-docker:${VERSION}"
+                sh "docker push -t prashanthdevaraj/java-docker:latest" 
             }
         }
-        stage('Deploy to prod') {
+        /*stage('Deploy to prod') {
             steps{
                 ansiblePlaybook become: true, becomeUser: 'root', credentialsId: 'ansible', inventory: 'ansible/hosts', playbook: 'ansible/deploy.yaml'
             }          
-        }
+        }*/
     }
 }
