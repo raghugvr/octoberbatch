@@ -60,10 +60,10 @@ pipeline {
                 sh "docker push prashanthdevaraj/java-docker:latest" 
             }
         }
-        /*stage('Deploy to prod') {
+        stage('Deploy to prod') {
             steps{
                 ansiblePlaybook become: true, becomeUser: 'root', credentialsId: 'ansible', inventory: 'ansible/hosts', playbook: 'ansible/deploy.yaml'
             }          
-        }*/
+        }
     }
 }
