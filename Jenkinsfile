@@ -50,7 +50,10 @@ pipeline {
             }          
         }*/
         stage('Build Docker Image') {
-            steps{
+                steps{
+                    withCredentials([string(credentialsId: 'dockerHubPassword', variable: 'dockerHubPassword')]) {
+                    sh "docker login -u prashanthdevaraj -p ${dockerHubPassword}"
+                }
                 sh "docker build -t prashanthdevaraj/java-docker:${VERSION} ."
                 sh "docker tag prashanthdevaraj/java-docker:${VERSION} prashanthdevaraj/java-docker:latest"
                 sh "docker push prashanthdevaraj/java-docker:${VERSION}"
