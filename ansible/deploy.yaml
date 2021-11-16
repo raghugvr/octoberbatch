@@ -4,7 +4,7 @@
   tasks:
     - name: Copy docker-compose.yml to demo server
       copy:
-        src: ./docker-compose.yml
+        src: ../docker-compose.yml
         dest: /home/ubuntu/
     - name: Stop running containers
       shell: docker-compose down
