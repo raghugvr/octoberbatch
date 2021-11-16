@@ -1,3 +1,4 @@
+def TAG_SELECTOR = "UNINTIALIZED"
 pipeline {
     agent any
     tools {
@@ -6,9 +7,11 @@ pipeline {
     stages{
         stage('Build') {
             steps{
-                //sh 'mvn clean package'
-                pom = readMavenPom file: 'pom.xml'
-                pom.version           
+                sh 'mvn clean package'
+                script {
+                    TAG_SELECTOR = readMavenPom().getVersion()
+                }
+                echo("TAG_SELECTOR=${TAG_SELECTOR}")       
             }          
         }  
          stage('SonarQube analysis') {
