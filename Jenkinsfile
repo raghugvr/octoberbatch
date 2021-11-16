@@ -7,7 +7,10 @@ pipeline {
         stage('Build') {
             steps{
                 sh 'mvn clean package'
-                echo "Build version no: ${POM_VERSION}"               
+                IMAGE = readMavenPom().getArtifactId()
+                VERSION = readMavenPom().getVersion()
+                echo "IMAGE: ${IMAGE}"
+                echo "VERSION: ${VERSION}"             
             }          
         }  
          stage('SonarQube analysis') {
