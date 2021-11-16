@@ -7,9 +7,9 @@
         src: ./docker-compose.yml
         dest: /home/ubuntu/
     - name: Stop running containers
-        shell: docker-compose down
+      shell: docker-compose down
     - name: Pull latest docker image
-    shell: docker-compose pull
+      shell: docker-compose pull
     - name: Run demo app in container
-    shell: docker-compose up -d
+      shell: docker-compose up -d
 
