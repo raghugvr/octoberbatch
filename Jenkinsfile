@@ -14,7 +14,7 @@ pipeline {
                 echo("Build version: ${VERSION}")       
             }          
         }  
-         stage('SonarQube analysis') {
+        /*stage('SonarQube analysis') {
               steps{
                   withSonarQubeEnv('SonarQube 8.9.3') { 
                   sh "mvn sonar:sonar"
@@ -30,7 +30,7 @@ pipeline {
                 echo 'Test'
             }
           } 
-        /*stage('Upload war to nexus') {
+        stage('Upload war to nexus') {
             steps{
                  nexusArtifactUploader artifacts: [
                      [
