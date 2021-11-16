@@ -2,6 +2,14 @@
 - hosts: prod-server
   become: true
   tasks:
-    - name: Deploy build to Tomcat
-      shell: wget http://3.16.181.122:8081/repository/demo/Demoapp/WebApp/1.1.2/WebApp-1.1.2.war -O /opt/tomcat/webapps/demo.war 
+    - name: Copy docker-compose.yml to demo server
+      copy:
+        src: ./docker-compose.yml
+        dest: /home/ubuntu/
+    - name: Stop running containers
+        shell: docker-compose down
+    - name: Pull latest docker image
+    shell: docker-compose pull
+    - name: Run demo app in container
+    shell: docker-compose up -d
 
