@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  webapp:
+    build: .
+    image: prashanthdevaraj/java-docker
+    container_name: tomcat
+    ports:
+      - 8080:8080
+    networks:
+      - web_net
+networks:
+  web_net:
+    driver: bridge

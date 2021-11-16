@@ -51,8 +51,9 @@ pipeline {
         }*/
         stage('Build Docker Image') {
             steps{
-                sh "docker info" 
-            }          
+                sh "docker build -t prashanthdevaraj/java-docker:${VERSION} -t prashanthdevaraj/java-docker:latest"
+                sh "docker push prashanthdevaraj/java-docker:${VERSION} -t prashanthdevaraj/java-docker:latest" 
+            }
         }
         stage('Deploy to prod') {
             steps{
