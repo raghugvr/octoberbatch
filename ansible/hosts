@@ -1,2 +1,5 @@
 [prod-server]
 prod-server1 ansible_ssh_host=13.58.248.10
+
+[kubernetes-server]
+prod-server2 ansible_ssh_host=3.129.74.126

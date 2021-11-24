@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tomcat-depl
+  labels:
+    app: tomcat-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tomcat-depl
+  template:
+    metadata:
+      labels:
+        app: tomcat-depl
+    spec:
+      containers:
+      - name: tomcat
+        image: prashanthdevaraj/java-docker:latest
+        ports:
+        - containerPort: 8080
