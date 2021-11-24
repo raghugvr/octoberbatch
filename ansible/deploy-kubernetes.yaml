@@ -7,11 +7,11 @@
         src: ../kubernetes/
         dest: /home/ubuntu/
     - name: Delete running services
-      shell: kubectl delete -f tomcat-service.yaml
+      shell: kubectl delete -f /home/ubuntu/tomcat-service.yaml
     - name: Delete running deployments
-      shell: kubectl delete -f tomcat-deployment.yaml
+      shell: kubectl delete -f /home/ubuntu/tomcat-deployment.yaml
     - name: Create tomcat deployment
-      shell: kubectl create -f tomcat-deployment.yaml
+      shell: kubectl create -f /home/ubuntu/tomcat-deployment.yaml
     - name: Create tomcat service
-      shell: kubectl create -f tomcat-service.yaml
+      shell: kubectl create -f /home/ubuntu/tomcat-service.yaml
 
