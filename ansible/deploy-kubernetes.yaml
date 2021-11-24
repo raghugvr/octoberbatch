@@ -1,14 +1,16 @@
 ---
 - hosts: kubernetes-server
-  become: true
+  become: false
   tasks:
     - name: Copy kubernetes deployment configs
       copy:
         src: ../kubernetes/
         dest: /home/ubuntu/
     - name: Delete running services
+      ignore_errors: yes
       shell: kubectl delete -f /home/ubuntu/tomcat-service.yaml
     - name: Delete running deployments
+      ignore_errors: yes
       shell: kubectl delete -f /home/ubuntu/tomcat-deployment.yaml
     - name: Create tomcat deployment
       shell: kubectl create -f /home/ubuntu/tomcat-deployment.yaml
