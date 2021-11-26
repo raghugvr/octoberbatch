@@ -16,4 +16,6 @@
       shell: kubectl create -f /home/ubuntu/tomcat-deployment.yaml
     - name: Create tomcat service
       shell: kubectl create -f /home/ubuntu/tomcat-service.yaml
+    - name: Create port forward
+      shell: kubectl port-forward --address 0.0.0.0 svc/tomcat-service 31868:8080&
 
